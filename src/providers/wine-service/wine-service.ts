@@ -11,7 +11,7 @@ export class WineService {
   constructor(public http: Http) {
   }
 
-  load(country, region, province) {
+  load(country) {
     if (this.wines) {
       return Promise.resolve(this.wines);
     }
@@ -23,11 +23,9 @@ export class WineService {
           this.wines = data;
           this.wines = this.wines.filter(function (w) {
             if (w.location.country === country) {
-              if (w.location.region === region || w.location.province === province) {
                 w.ordered = 0;
                 w.selected = false;
                 return w;
-              }
             }
           });
 
