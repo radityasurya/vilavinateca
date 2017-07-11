@@ -47,13 +47,15 @@ page-wines {
         display: flex;
         margin-left: auto;
         margin-right: auto;
+        text-transform: uppercase;
         &__header {
             width: 87vw;
             border: none;
             letter-spacing: 0;
             border-bottom: 4px solid black;
             &--large {
-                font-size: 1.5em;
+                font-size: 1.2em;
+                margin-top: 6px;
             }
             &--small {
                 margin-top: 10px;

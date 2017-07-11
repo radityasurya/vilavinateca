@@ -105,8 +105,7 @@ export class WinesPage {
   }
 
   getWines(wineType){
-    // this.wines = this.wineService.filterItems(wineType);
-    return this.filterWines();
+    this.wines = this.wineService.filterItems(wineType);
   }
 
   select($event, wine) {
