@@ -8,7 +8,8 @@
         "price": 51.90,
         "location": {
             "country": "Spain",
-            "region": "Ribera del Duero"
+            "region": "Ribera del Duero",
+            "province": "Dominio de Pingus"
         }
     },
     {
@@ -20,7 +21,8 @@
         "price": 103.80,
         "location": {
             "country": "Spain",
-            "region": "Ribera del Duero"
+            "region": "Ribera del Duero",
+            "province": "Dominio de Pingus"
         }
     },
     {
@@ -32,7 +34,8 @@
         "price": 45.40,
         "location": {
             "country": "Spain",
-            "region": "Ribera del Duero"
+            "region": "Ribera del Duero",
+            "province": "Dominio de Pingus"
         }
     },
     {
@@ -44,7 +47,8 @@
         "price": 98.80,
         "location": {
             "country": "Spain",
-            "region": "Ribera del Duero"
+            "region": "Ribera del Duero",
+            "province": "Dominio de Pingus"
         }
     },
     {
@@ -56,7 +60,8 @@
         "price": 53.80,
         "location": {
             "country": "Spain",
-            "region": "Ribera del Duero"
+            "region": "Ribera del Duero",
+            "province": "Dominio de Pingus"
         }
     },
     {
@@ -68,7 +73,8 @@
         "price": 53.80,
         "location": {
             "country": "France",
-            "region": "Burgundy"
+            "region": "Burgundy",
+            "province": "Sierra Leon"
         }
     },
     {
@@ -80,7 +86,8 @@
         "price": 53.80,
         "location": {
             "country": "Italy",
-            "region": "Tuscany"
+            "region": "Tuscany",
+            "province": "Vatican"
         }
     },
     {
@@ -92,7 +99,8 @@
         "price": 53.80,
         "location": {
             "country": "Spain",
-            "region": "Rioja"
+            "region": "Rioja",
+            "province": "Barcelona"
         }
     },
     {
@@ -104,7 +112,8 @@
         "price": 53.80,
         "location": {
             "country": "Spain",
-            "region": "Castilla y Leon"
+            "region": "Castilla y Leon",
+            "province": "Amarola"
         }
     },
     {
@@ -116,7 +125,8 @@
         "price": 53.80,
         "location": {
             "country": "USA",
-            "region": "California"
+            "region": "California",
+            "province": "White country"
         }
     }
 ]

@@ -21,8 +21,9 @@ export class WinesPage {
   public totalOrder: number = 0;
   public totalPrice: number = 0;
   public searchTerm: string = "";
-
-  public selectedRegion: any = "RIBERA DEL DUERO";
+  public selectedCountry: any = "Spain";
+  public selectedRegion: any = "Ribera del Duero";
+  public selectedDo: any = "Dominio de Pingus";
 
   @ViewChild('unitPopup') UnitPopupPage: UnitPopupPage;
 
@@ -36,13 +37,13 @@ export class WinesPage {
   }
 
   ionViewDidLoad() {
-    this.loadWines();
+    this.loadWines(this.selectedCountry, this.selectedRegion, this.selectedDo);
   }
 
   checkout() {
     this.navCtrl.push(QuotationsPage);
   }
- 
+
   gotoMain() {
     this.navCtrl.push(MainPage);
   }
@@ -55,10 +56,10 @@ export class WinesPage {
     this.navCtrl.push(SettingPage);
   }
 
-  loadWines() {
-    this.wineService.load()
+  loadWines(country, region, province) {
+    this.wineService.load(country, region, province)
       .then(response => {
-        this.wines = this.wineService.filterItems(this.searchTerm);
+        this.wines = response;
       });
   }
 

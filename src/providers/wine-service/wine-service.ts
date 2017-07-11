@@ -11,7 +11,7 @@ export class WineService {
   constructor(public http: Http) {
   }
 
-  load() {
+  load(country, region, province) {
     if (this.wines) {
       return Promise.resolve(this.wines);
     }
@@ -21,12 +21,20 @@ export class WineService {
         .map(res => res.json())
         .subscribe(data => {
           this.wines = data;
-          this.wines = this.wines.map(function (w) {
+          this.wines = this.wines.filter(function (w) {
+            if (w.location.country === country) {
+              if (w.location.region === region || w.location.province === province) {
+                return w;  
+              }
+            }
+          }).map(function (w) {
             var wine = Object.assign({}, w);
             wine.selected = false;
             wine.ordered = 0;
-            return wine;
+
+            return w;
           });
+
           resolve(this.wines);
         });
     });
@@ -40,7 +48,7 @@ export class WineService {
           return item.type;
         }
       } else {
-        return item.type
+        return item.type;
       }
 
     });
