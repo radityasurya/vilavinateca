@@ -1,0 +1,124 @@
+<ion-content padding style="backgroud-color:white;">
+
+    <ion-grid>
+        <!-- Navbar -->
+        <ion-row class="navbar">
+            <ion-col col-4>
+                <img src="assets/image/logo.png" /> </ion-col>
+        </ion-row>
+
+        <ion-row class="quotations-info">
+            <ion-col col-5>
+                <div class="summary">
+                    <p style="font-weight: bold;">NIF A-1234567</p>
+                    <p>C/ Agullars, 7<br> 08003 Barcelona
+                        <br>902 327 777</p>
+                </div>
+            </ion-col>
+            <ion-col col-7>
+                <ion-row>
+                    <ion-col class="title" col-12>DATOS DEL CLIENTE</ion-col>
+                    <ion-col col-6>
+                        <ion-input class="input-field" value="Restaurant Caelis"></ion-input>
+                    </ion-col>
+                    <ion-col col-6>
+                        <ion-input class="input-field" placeholder="NIF"></ion-input>
+                    </ion-col>
+                    <ion-col col-6>
+                        <ion-input class="input-field" placeholder="direction postal"></ion-input>
+                    </ion-col>
+                    <ion-col col-6>
+                        <ion-input class="input-field" placeholder="correo electronico"></ion-input>
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+        </ion-row>
+
+        <ion-row class="quotations-title">
+            <ion-col>
+                <h1>PROFORMA #0718</h1>
+            </ion-col>
+        </ion-row>
+
+        <ion-row center class="table">
+            <ion-list>
+                <!-- Table Header -->
+                <ion-item no-lines class="table-header">
+                    <ion-row class="table table__header">
+                        <ion-col col-6 class="table__header--small" text-left>
+                            REFERENCIA
+                        </ion-col>
+                        <ion-col class="table__header--small">CANTIDAD</ion-col>
+                        <ion-col class="table__header--small">PERCIO UNIDAD</ion-col>
+                        <ion-col class="table__header--small">PERCIO TOTAL</ion-col>
+                    </ion-row>
+                </ion-item>
+
+                <!-- Table Data -->
+                <ion-item-sliding *ngFor="let wine of wines">
+                    <ion-item>
+                        <ion-row class="table__data">
+                            <ion-col col-2>
+                                <span style="width: 20px; height: 20px; margin-right: 15px;display: inline-block;" [style.background-color]="showColor(wine?.type)"></span>
+                                <span style="display:inline-block; position: relative; display: inline-block; top: -3px;">{{wine?.refId}}</span>
+                            </ion-col>
+                            <ion-col col-4>{{wine?.name}}</ion-col>
+                            <ion-col class="table-data" style="font-weight: bold" [class.selected]="wine?.selected" (click)="presentPopover($event, wine);"
+                                text-right>{{wine.quantity}}</ion-col>
+                            <ion-col text-right>{{wine?.price}} €</ion-col>
+                            <ion-col style="font-weight: bold" text-right>{{wine?.total}} €</ion-col>
+                        </ion-row>
+                    </ion-item>
+
+                    <ion-item-options side="right" style="margin-right: 16px;">
+                        <div class="sliding-div" (click)="order(wine, 10);">
+                            <img class="image-div" src="assets/image/double_red_bottle.png" />
+                            <div style="font-style:Italic;">10</div>
+                        </div>
+
+                        <div class="sliding-div" (click)="order(wine, 5);">
+                            <img class="image-div" src="assets/image/red_bottle.png" />
+                            <div style="font-style:Italic;">5</div>
+                        </div>
+
+                        <div class="sliding-div" (click)="remove(wine)">
+                            <img class="image-div" src="assets/image/delete_slide.png" />
+                            <div style="font-style:Italic;">ELIMINAR</div>
+                        </div>
+                    </ion-item-options>
+
+                </ion-item-sliding>
+
+                <ion-item no-lines class="quotations-total table-header">
+                    <ion-row class="table__data">
+                        <ion-col col-6></ion-col>
+                        <ion-col style="font-weight: bold" text-right>SUBTOTAL</ion-col>
+                        <ion-col style="font-weight: bold" text-right>IVA (21%)</ion-col>
+                        <ion-col style="font-weight: bold" text-right>TOTAL</ion-col>
+                    </ion-row>
+                    <ion-row class="table__data">
+                        <ion-col col-6></ion-col>
+                        <ion-col text-right>{{calculateSubTotal() | currency:'EUR':true}}</ion-col>
+                        <ion-col text-right>{{calculateIvaTotal() | currency:'EUR':true}}</ion-col>
+                        <ion-col text-right>{{calculateTotal() | currency:'EUR':true}}</ion-col>
+                    </ion-row>
+                </ion-item>
+            </ion-list>
+        </ion-row>
+
+
+
+    </ion-grid>
+  
+</ion-content>
+
+<ion-footer class="footer-div">
+    <ion-icon color="white" name="ios-arrow-back-outline" color="white" (click)="goBack();"></ion-icon>
+
+    <div style="margin-left:70%; font-size:2vw;" (click)="goConfirmation();">
+        ENVIAR PROFOMA
+    </div>
+    <div class="footer-item-div" (click)="goConfirmation();">
+        <ion-icon name="ios-send" color="white" class="check-icon"></ion-icon>
+    </div>
+</ion-footer>

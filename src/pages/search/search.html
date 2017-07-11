@@ -1,0 +1,15 @@
+<ion-content scroll="false">
+  <ion-grid>
+    <ion-row class="navbar">
+      <ion-col class="navbar__title" col-10>BUSCADOR</ion-col>
+      <ion-col class="navbar__close" col-2 (click)="gotoBack()">
+        <ion-icon name="close"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <img src="assets/image/search_icon.png" class="search-image" class="search-icon"/>
+  <ion-input #input class="search-input" placeholder="BUSCA VINOS, REGIONS, DO"></ion-input>
+
+  <button class="search-button" (click)="gotoSearchResult();">BUSCAR</button>
+</ion-content>

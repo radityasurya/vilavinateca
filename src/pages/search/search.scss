@@ -1,0 +1,60 @@
+page-search {
+  .navbar {
+    margin-top: 6vw;
+    margin-left: 4vw;
+    margin-right: 4vw;
+    font-family: 'Kapra Neue';
+    font-weight: 600;
+    font-style: normal;
+    font-size: 2vw;
+    &__title {
+      font-weight: bold;
+    }
+    &__close {
+      text-align: right;
+      padding-right: 15px;
+      font-size: 1.5em;
+      position: absolute;
+      top: 60px;
+      right: 50px;
+      color: #222;
+    }
+  }
+  .buscador-div {
+    font-size: 2vw;
+    font-weight: bold;
+    font-family: "LightExapnded";
+    margin-top: 7vw;
+    margin-left: 4vw;
+  }
+  .search-icon {
+    width: 6%;
+    margin-left: 45%;
+    margin-top: -13px;
+  }
+  .search-input {
+     font-family: 'Kapra Neue';
+    font-weight: 300;
+    font-style: normal;
+    width: 50%;
+    font-size: 20px;
+    padding: 3px;
+    margin-left: 25%;
+    margin-top: 15px;
+    color: black;
+    text-align: center;
+    ::-webkit-input-placeholder { text-align:center; }
+
+    
+  }
+  .search-button {
+    width: 102%;
+    position: absolute;
+    height: 50px;
+    background-color: #8f2033;
+    margin-left: -1%;
+    top: 31vw;
+    color: white;
+    font-size: 17px;
+  }
+}

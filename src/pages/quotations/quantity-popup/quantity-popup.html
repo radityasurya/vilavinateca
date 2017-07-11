@@ -1,0 +1,22 @@
+<div style="background-color:rgb(230, 230, 230); height: 300px;">
+  <div class="unidades-font">UNIDADES</div>
+  <div class="minus-plus-div">
+    <p class="minus-btn" (click)="decrease();">-</p>
+    <ion-input class="input-div" [(ngModel)]="selectedWine.quantity"></ion-input>
+    <p class="plus-btn" (click)="increase();">+</p>
+  </div>
+
+  <div class="unidades-font">DESCUENTO</div>
+  <div class="minus-plus-div">
+    <ion-input class="input-div" value="20%"></ion-input>
+  </div>
+
+  <div class="unidades-font">REGALO</div>
+  <div class="minus-plus-div">
+    <p class="minus-btn" (click)="minus2();">-</p>
+    <ion-input class="input-div" value="6"></ion-input>
+    <p class="plus-btn" (click)="plus2();">+</p>
+  </div>
+
+  <div class="bottom-line"></div>
+</div>

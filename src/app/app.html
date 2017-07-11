@@ -1,0 +1,19 @@
+<ion-menu side="right" [content]="content">
+
+  <ion-content class="type-filter">
+    <div class="type-filter__title">Filtrar por tipo</div>
+    <ion-list>
+      <div *ngFor="let type of types" class="type-filter__list">
+        <div class="type-filter__item" (click)="select(type)">
+          <img [src]="type.icon" />
+          <p [class.selected]="type?.selected">{{type.name}}</p>
+        </div>
+      </div>
+    </ion-list>
+
+  </ion-content>
+
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content data-tap-disabled="true" (tap)="tapEvent($event)"></ion-nav>

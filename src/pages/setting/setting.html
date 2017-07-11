@@ -1,0 +1,174 @@
+<!-- <ion-header>
+  <ion-navbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-navbar>
+</ion-header> -->
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="navbar">
+      <ion-col class="navbar__title" col-10>FILTROS AVANZADOS</ion-col>
+      <ion-col class="navbar__close" col-2 (click)="gotoBack()">
+        <ion-icon name="close"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid id="tipo" class="setting">
+    <ion-row class="setting__title">
+      <ion-col text-center col-2>
+        <img src="assets/image/black_bottle.png" class="image-style" />
+      </ion-col>
+      <ion-col>
+        <h3>TIPO</h3>
+      </ion-col>
+    </ion-row>
+    <ion-row class="setting__types">
+      <ion-col col-3 *ngFor="let type of typeData">
+        <div class="setting__container" (click)="setChecked(type.id);">
+          <ion-icon name="md-checkmark" [style.color]="type.checked ? '' : 'white'" class="check-icon"></ion-icon>
+          {{type.name}}
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid id="anada" class="setting">
+    <ion-row class="setting__title">
+      <ion-col text-center col-2>
+        <img src="assets/image/grape.png" class="image-style" />
+      </ion-col>
+      <ion-col>
+        <h3>ANADA</h3>
+      </ion-col>
+      <ion-item [class.slider]="true">
+        <ion-label style="font-size: 2vw; color: #333; margin-bottom: 15px;">{{yearValue.lower}} - {{yearValue.upper}}</ion-label>
+        <ion-range style="margin-right: 50px;" dualKnobs="true" color="danger" pin="true" min="1970" max="2017" step="1" [(ngModel)]="yearValue"></ion-range>
+      </ion-item>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid id="precio" class="setting">
+    <ion-row class="setting__title">
+      <ion-col text-center col-2>
+        <img src="assets/image/tag.png" class="image-style" />
+      </ion-col>
+      <ion-col>
+        <h3>PRECIO</h3>
+      </ion-col>
+      <ion-item [class.slider]="true">
+        <ion-label style="font-size: 2vw; color: #333; margin-bottom: 15px;">{{priceValue.lower}} - {{priceValue.upper}} €</ion-label>
+        <ion-range style="margin-right: 50px;" dualKnobs="true" color="danger" pin="true" min="0" max="150" step="1" [(ngModel)]="priceValue"></ion-range>
+      </ion-item>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid id="procedencia" class="setting">
+    <ion-row class="setting__title">
+      <ion-col text-center col-2>
+        <img src="assets/image/earth.png" class="image-style" />
+      </ion-col>
+      <ion-col>
+        <h3>PROCEDENCIA</h3>
+      </ion-col>
+    </ion-row>
+
+    <ion-row style="margin-top: 7%" class="setting__types">
+      <ion-row class="filter-list" *ngFor="let filter of filterList">
+        <div class="-filteritem" [class.divider]="filter != filterList[filterList.length-1]">
+          <ion-row *ngIf="filterList.indexOf(filter) != 0">
+            <ion-col col-12 text-center>
+            <button ion-button clear icon-left style="color: gray; margin-bottom: 30px;">
+              <ion-icon name="ios-add-circle-outline" style="font-size:  3em;"></ion-icon>
+            </button>
+          </ion-col>
+          </ion-row>
+        <ion-col col-6>
+          <div class="dropdown">
+            <button ion-btn class="dropbtn" style="text-transform: uppercase;">{{filter.selectedCountriesString != '' ? filter.selectedCountriesString : 'TODOS'}}
+              <ion-icon style="float: right" name="arrow-down"></ion-icon>
+            </button>
+            <div class="dropdown-content">
+              <div class="dropdown-search" style="font-size: 1vw; border-bottom: 1px solid gray;">
+                <ion-item>
+                  <ion-label><img style="height: 30px;" src="assets/image/search_icon.png" /></ion-label>
+                  <ion-input (input)="getCountry($event, filter)" type="text" placeholder="TYPE TO SEARCH"></ion-input>
+                </ion-item>
+              </div>
+              <div class="country-list" *ngFor="let country of filter.countries">
+                <ion-item style="border-bottom: 1px solid gray;" [class.selected]="country?.checked" (click)="selectCountry(filter, country);">
+                  {{country?.name}}
+                  <ion-icon *ngIf="country?.checked" name="checkmark" item-end></ion-icon>
+                </ion-item>
+              </div>
+            </div>
+          </div>
+        </ion-col>
+        <ion-col col-6 style="margin-bottom: 5%">
+          <div class="dropdown">
+            <button class="dropbtn" style="width: 280px; text-transform: uppercase;">{{filter.selectedRegionsString != '' ? filter.selectedRegionsString : 'TODAS LAS REGIONES'}}
+                <ion-icon style="float: right" name="arrow-down"></ion-icon>
+            </button>
+            <div class="dropdown-content" style="width: 280px">
+              <div class="country-list" *ngFor="let c of filter.selectedCountries">
+                <ion-item text-right style="font-family: 'Kapra Neue Expanded'; font-weight: normal; font-style: normal; text-transform: uppercase; font-size: 0.8em;">
+                  {{c.name}}
+                </ion-item>
+                <div class="region-list" *ngFor="let r of c.regions">
+                  <ion-item (click)="selectRegion(filter, r)" [class.selected]="r?.checked" style="border-bottom: 1px solid gray;">
+                    {{r.name}}
+                    <ion-icon *ngIf="r?.checked" name="checkmark" item-end></ion-icon>
+                  </ion-item>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </ion-col>
+        <ion-row class="checkboxes" *ngIf="filter.selectedCountriesString != ''">
+          <ion-col col-12 style="font-weight: bold; font-style: italic; margin-bottom: 10px;">D.O</ion-col>
+          <ion-col col-6 *ngFor="let d of filter.do">
+            <div class="setting__container" (click)="setDoChecked(filter, d);">
+              <ion-icon name="md-checkmark" [style.color]="d.checked ? '' : 'white'" class="check-icon"></ion-icon>
+              {{d.name}}
+            </div>
+          </ion-col>
+        </ion-row>
+        </div>
+      </ion-row>
+      <ion-col col-12 style="font-weight: bold; font-style: italic; margin-top: 25px; margin-bottom: 10px;">ANADIR FILTRO</ion-col>
+      <ion-col col-6 text-right style="margin-bottom: 25px;">
+        <button (click)='removeFilter()' ion-button clear icon-left style="color: black">
+          <ion-icon name="ios-remove-circle-outline" style="font-size:  3em;"></ion-icon>
+          QUITA A LA BUSQUEDA
+        </button>
+      </ion-col>
+
+      <ion-col col-6 style="margin-bottom: 25px;">
+        <button (click)="addFilter()" ion-button clear icon-left style="color: black">
+          <ion-icon name="ios-add-circle-outline" style="font-size:  3em;"></ion-icon>
+          ANADIR A LA BUSQUEDA
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer class="footer-div">
+  <div style="margin-left:37%; font-size:2vw;" (click)="gotoBack();">
+    LIMPIAR OPCIONES
+  </div>
+  <div class="footer-item-div" (click)="gotoBack();">
+    <ion-icon name="ios-trash" color="white" class="check-icon"></ion-icon>
+  </div>
+  <div style="margin-left:3%; font-size:2vw;" (click)="gotoBack();">
+    APLICAR FILTROS
+  </div>
+  <div class="footer-item-div" (click)="gotoBack();">
+    <ion-icon name="md-checkmark" color="white" class="check-icon"></ion-icon>
+  </div>
+
+
+</ion-footer>

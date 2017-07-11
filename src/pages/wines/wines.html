@@ -1,0 +1,92 @@
+<ion-content padding style="backgroud-color:white;">
+
+  <ion-grid>
+    <!-- Navbar -->
+    <ion-row class="navbar">
+      <ion-col col-4>
+        <img src="assets/image/logo.png" /> </ion-col>
+      <ion-col class="options" col-8>
+        <ul>
+          <li><img src="assets/image/search_icon.png" (click)="gotoSearchPage();" /></li>
+          <li> <img src="assets/image/mix_icon.png" menuToggle />
+          </li>
+          <li> <img src="assets/image/setting_icon.png" (click)="gotoSettingPage();" />
+          </li>
+        </ul>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="wines-region">
+      <ion-col>
+        <h1>{{selectedRegion}}</h1>
+      </ion-col>
+    </ion-row>
+
+    <ion-row center class="table">
+      <ion-list>
+        <!-- Table Header -->
+        <ion-item no-lines class="table-header">
+          <ion-row class="table table__header">
+            <ion-col col-6 class="table__header--large">
+              Dominio de Pingus
+            </ion-col>
+            <ion-col class="table__header--small">ANADA</ion-col>
+            <ion-col class="table__header--small">PERCIO</ion-col>
+            <ion-col class="table__header--small">UDS</ion-col>
+            <ion-col col-2></ion-col>
+          </ion-row>
+        </ion-item>
+
+
+        <ion-item-sliding *ngFor="let wine of wines">
+          <ion-item>
+            <ion-row class="table__data">
+              <ion-col [class.selected]="wine?.selected" col-6>{{wine?.name}}
+                <div class="color-div" [style.background-color]="showColor(wine?.type)"></div>
+              </ion-col>
+              <ion-col class="table-data" [class.selected]="wine?.selected" text-right>{{wine?.year}}</ion-col>
+              <ion-col [class.selected]="wine?.selected" text-right>{{wine?.price}} €</ion-col>
+              <ion-col #unitPopup [class.selected]="wine?.selected" text-right>{{wine.ordered == 0 ? '' : wine.ordered}}</ion-col>
+              <ion-col col-2 class="checkbox-col" (click)="select($event, wine);">
+                <ion-icon [name]="wine?.selected ? 'ios-checkmark-circle' : 'ios-checkmark-circle-outline'"></ion-icon>
+              </ion-col>
+            </ion-row>
+          </ion-item>
+
+          <ion-item-options side="right" style="margin-right: 16px;">
+            <div class="sliding-div" (click)="order(wine, 10);">
+              <img class="image-div" src="assets/image/double_red_bottle.png" />
+              <div style="font-style:Italic;">10</div>
+            </div>
+
+            <div class="sliding-div" (click)="order(wine, 5);">
+              <img class="image-div" src="assets/image/red_bottle.png" />
+              <div style="font-style:Italic;">5</div>
+            </div>
+
+            <div class="sliding-div" (click)="remove(wine)">
+              <img class="image-div" src="assets/image/delete_slide.png" />
+              <div style="font-style:Italic;">ELIMINAR</div>
+            </div>
+          </ion-item-options>
+
+        </ion-item-sliding>
+      </ion-list>
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>
+
+<ion-footer class="footer-div">
+  <div style="width:50vw; text-align:center;">
+    <span>TOTAL</span> {{totalPrice | currency:'EUR':true}}
+  </div>
+  <div>
+    {{totalOrder | number}}
+  </div>
+  <div style="width:20vw;">
+    <img src="assets/image/bottom_bottle.png" style="height: 36px; margin-left: 20px;" />
+  </div>
+   <ion-icon *ngIf="totalOrder > 0" color="white" name="ios-arrow-forward-outline" color="white" (click)="checkout();"></ion-icon>
+</ion-footer>
