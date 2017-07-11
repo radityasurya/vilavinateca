@@ -24,15 +24,11 @@ export class WineService {
           this.wines = this.wines.filter(function (w) {
             if (w.location.country === country) {
               if (w.location.region === region || w.location.province === province) {
-                return w;  
+                w.ordered = 0;
+                w.selected = false;
+                return w;
               }
             }
-          }).map(function (w) {
-            var wine = Object.assign({}, w);
-            wine.selected = false;
-            wine.ordered = 0;
-
-            return w;
           });
 
           resolve(this.wines);
