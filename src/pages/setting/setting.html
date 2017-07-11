@@ -81,7 +81,7 @@
           <ion-row *ngIf="filterList.indexOf(filter) != 0">
             <ion-col col-12 text-center>
             <button ion-button clear icon-left style="color: gray; margin-bottom: 30px;">
-              <ion-icon name="ios-add-circle-outline" style="font-size:  3em;"></ion-icon>
+              <ion-icon [name]="filter.isAdd ? 'ios-add-circle-outline' : 'ios-remove-circle-outline'" style="font-size:  3em;"></ion-icon>
             </button>
           </ion-col>
           </ion-row>

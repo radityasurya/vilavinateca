@@ -1,13 +1,26 @@
-import { Component, ViewChild } from '@angular/core';
-import { NavController, PopoverController, Events } from 'ionic-angular';
+import {
+  Component,
+  ViewChild
+} from '@angular/core';
+import {
+  NavController,
+  PopoverController,
+  Events
+} from 'ionic-angular';
 
 @Component({
   selector: 'page-setting',
   templateUrl: 'setting.html'
 })
 export class SettingPage {
-  yearValue: any = { lower: 1992, upper: 2008 };
-  priceValue: any = { lower: 30, upper: 120 };
+  yearValue: any = {
+    lower: 1992,
+    upper: 2008
+  };
+  priceValue: any = {
+    lower: 30,
+    upper: 120
+  };
   regions: string = "ESCOGER REGIONS";
   public doData: any;
   public typeData: any;
@@ -22,7 +35,7 @@ export class SettingPage {
   constructor(public navCtrl: NavController,
     public countryPopupCtrl: PopoverController,
     public events: Events) {
-    
+
     this.initializeData();
 
     var filter = {
@@ -38,108 +51,135 @@ export class SettingPage {
   }
 
   initializeData() {
-    this.typeData = [{ 'id': 0, 'name': 'TINTO', 'checked': true },
-    { 'id': 1, 'name': 'BLANCO', 'checked': false },
-    { 'id': 2, 'name': 'ROSADO', 'checked': false },
-    { 'id': 3, 'name': 'ESPUMOSOS', 'checked': true },
-    { 'id': 4, 'name': 'ESPECIALES', 'checked': true },
-    { 'id': 5, 'name': 'LICORES', 'checked': true },
-    { 'id': 6, 'name': 'VARIOS', 'checked': true },
-    { 'id': 7, 'name': 'COPAS', 'checked': true }];
-
-    this.countries = [
+    this.typeData = [{
+        'id': 0,
+        'name': 'TINTO',
+        'checked': true
+      },
       {
+        'id': 1,
+        'name': 'BLANCO',
+        'checked': false
+      },
+      {
+        'id': 2,
+        'name': 'ROSADO',
+        'checked': false
+      },
+      {
+        'id': 3,
+        'name': 'ESPUMOSOS',
+        'checked': true
+      },
+      {
+        'id': 4,
+        'name': 'ESPECIALES',
+        'checked': true
+      },
+      {
+        'id': 5,
+        'name': 'LICORES',
+        'checked': true
+      },
+      {
+        'id': 6,
+        'name': 'VARIOS',
+        'checked': true
+      },
+      {
+        'id': 7,
+        'name': 'COPAS',
+        'checked': true
+      }
+    ];
+
+    this.countries = [{
         "name": "Francia",
         "checked": false,
-        "regions": [
-          {
+        "regions": [{
             "name": "Todas las regiones",
-            "checked": true, 
+            "checked": true,
           },
           {
             "name": "Region 1",
-            "checked": false, 
+            "checked": false,
           },
           {
             "name": "Region 2",
-            "checked": false, 
+            "checked": false,
           },
           {
             "name": "Region 3",
-            "checked": false, 
+            "checked": false,
           }
         ]
       },
       {
         "name": "Espana",
-        "regions": [
-          {
+        "regions": [{
             "name": "Todas las regiones",
-            "checked": true, 
+            "checked": true,
           },
           {
             "name": "Region 1",
-            "checked": false, 
+            "checked": false,
           },
           {
             "name": "Region 2",
-            "checked": false, 
+            "checked": false,
           },
           {
             "name": "Region 3",
-            "checked": false, 
+            "checked": false,
           }
         ],
         "checked": false
       },
       {
         "name": "Portugal",
-        "regions": [
-          {
+        "regions": [{
             "name": "Todas las regiones",
-            "checked": true, 
+            "checked": true,
           },
           {
             "name": "Region 1",
-            "checked": false, 
+            "checked": false,
           },
           {
             "name": "Region 2",
-            "checked": false, 
+            "checked": false,
           },
           {
             "name": "Region 3",
-            "checked": false, 
+            "checked": false,
           }
         ],
         "checked": false
       },
       {
         "name": "Italia",
-        "regions": [
-          {
+        "regions": [{
             "name": "Todas las regiones",
-            "checked": true, 
+            "checked": true,
           },
           {
             "name": "Region 1",
-            "checked": false, 
+            "checked": false,
           },
           {
             "name": "Region 2",
-            "checked": false, 
+            "checked": false,
           },
           {
             "name": "Region 3",
-            "checked": false, 
+            "checked": false,
           }
         ],
         "checked": false
       }
     ];
 
-    this.doData = [
-      {
+    this.doData = [{
         "name": "DENOMINACION DE ORIGEN 1",
         "checked": false
       },
@@ -171,7 +211,7 @@ export class SettingPage {
 
     if (country.checked) {
       filter.selectedCountries.push(country);
-      
+
     } else {
       var index = filter.selectedCountries.indexOf(country);
       if (index > -1) {
@@ -218,15 +258,26 @@ export class SettingPage {
       selectedCountriesString: "",
       selectedCountries: [],
       selectedRegionsString: "",
+      isAdd: true
     }
     this.filterList.push(filter);
   }
 
   removeFilter() {
-    if (this.filterList.length > 1) {
-    this.filterList.pop();
 
+    this.initializeData();
+
+    var filter = {
+      countries: this.countries,
+      type: this.typeData,
+      do: this.doData,
+      selectedCountriesString: "",
+      selectedCountries: [],
+      selectedRegionsString: "",
+      isAdd: false
     }
+    this.filterList.push(filter);
   }
+
 
 }
