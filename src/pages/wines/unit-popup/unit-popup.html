@@ -1,14 +1,17 @@
 <div style="background-color:rgb(230, 230, 230); height: 240px; width: 200px;">
   <div class="unidades-font">UNIDADES</div>
-  <div class="minus-plus-div">
-    <p class="minus-btn">-</p>
-    <ion-input class="input-div"
-               type="number"></ion-input>
-    <p class="plus-btn">+</p>
-  </div>
-  <div class="div-06">06</div>
-  <div class="div-06">12</div>
-  <div class="div-06">18</div>
-  <div class="div-06">24</div>
-  <div class="bottom-line"></div>
+    <div class="minus-plus-div">
+      <p class="minus-btn" (click)="decrease();">-</p>
+      <ion-input type="number" class="input-div" [(ngModel)]="selectedWine.ordered"></ion-input>
+      <p class="plus-btn" (click)="increase();">+</p>
+    </div>
+
+    <div class="div-06" (click)="setOrder(6);">06</div>
+    <div class="div-06" (click)="setOrder(12);">12</div>
+    <div class="div-06" (click)="setOrder(18);">18</div>
+    <div class="div-06" (click)="setOrder(24);">24</div>
+
+    <div class="bottom-line"></div>
+
+
 </div>
