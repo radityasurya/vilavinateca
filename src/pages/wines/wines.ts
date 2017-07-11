@@ -22,8 +22,9 @@ export class WinesPage {
   public totalPrice: number = 0;
   public searchTerm: string = "";
   public selectedCountry: any = "Spain";
-  public selectedRegion: any = "Ribera del Duero";
-  public selectedDo: any = "Dominio de Pingus";
+  public availableRegions: any;
+  public availableProvinces: any;
+
 
   @ViewChild('unitPopup') UnitPopupPage: UnitPopupPage;
 
@@ -32,12 +33,15 @@ export class WinesPage {
     public unitPopupCtrl: PopoverController,
     public events: Events) {
 
+    this.availableRegions = [];
+    this.availableProvinces = [];
+
     this.events.subscribe("order:update", (evt) => { this.getTotalOrder(); this.getTotalPrice(); });
     this.events.subscribe("filter:update", (evt) => { this.getWines(evt); });
   }
 
   ionViewDidLoad() {
-    this.loadWines(this.selectedCountry, this.selectedRegion, this.selectedDo);
+    this.loadWines(this.selectedCountry);
   }
 
   checkout() {
@@ -56,15 +60,53 @@ export class WinesPage {
     this.navCtrl.push(SettingPage);
   }
 
-  loadWines(country, region, province) {
-    this.wineService.load(country, region, province)
+  loadWines(country) {
+    this.wineService.load(country)
       .then(response => {
         this.wines = response;
+        this.getAvailableRegions();
       });
   }
 
+  getAvailableRegions() {
+    var temp = [];
+
+    this.wines.forEach(function (wine) {
+      if (temp.indexOf(wine.location.region) < 0) {
+        console.log(wine.location.region);
+        temp.push(wine.location.region);
+      }
+    });
+
+    this.availableRegions = temp;
+  }
+
+  getProvinces(regionName) {
+
+    var provinceList = [];
+
+    this.wines.forEach(function (wine) {
+      if (provinceList.indexOf(wine.location.province) < 0) {
+        if (wine.location.region === regionName) {
+          provinceList.push(wine.location.province);
+        }
+      }
+    });
+
+    return provinceList;
+  }
+
+  filterWines(regionName, provinceName) {
+    return this.wines.filter(function (wine) {
+      if (wine.location.region === regionName && wine.location.province === provinceName) {
+        return wine;
+      }
+    });
+  }
+
   getWines(wineType){
-    this.wines = this.wineService.filterItems(wineType);
+    // this.wines = this.wineService.filterItems(wineType);
+    return this.filterWines();
   }
 
   select($event, wine) {

@@ -26128,6 +26128,7 @@ page-wines .navbar .options ul li img {
 
 page-wines .wines-region {
   margin-bottom: 3%;
+  width: 100%;
 }
 
 page-wines .wines-region h1 {
