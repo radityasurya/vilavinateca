@@ -20,18 +20,17 @@ page-setting {
       color: #222;
     }
   }
-  #anada {
-    margin-top: 3%;
-  }
   .setting {
     width: 70vw;
     height: 130px;
+    margin-top: 50px;
+
     &__title {
       img {
         height: 50px;
       }
       h3 {
-        font-size: 2vw;
+        font-size: 1.8vw;
         font-family: 'Kapra Neue';
         font-weight: 600;
         font-style: italic;

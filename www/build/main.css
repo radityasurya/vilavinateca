@@ -25425,14 +25425,14 @@ ion-backdrop {
 page-confirm .splash-div {
   width: 100%;
   background-image: url("../assets/image/confirmation.png");
-  background-size: 100% 100%;
+  background-size: cover;
   height: 100%;
 }
 
 page-home .splash-div {
   width: 100%;
   background-image: url("../assets/image/splash.jpg");
-  background-size: 100% 100%;
+  background-size: cover;
   height: 100%;
 }
 
@@ -25440,7 +25440,7 @@ page-main .background-div {
   width: 100%;
   height: 100%;
   background-image: url("../assets/image/main.png");
-  background-size: 100% 100%;
+  background-size: cover;
 }
 
 page-main .venda-avanzada-btn {
@@ -25805,13 +25805,10 @@ page-setting .navbar__close {
   color: #222;
 }
 
-page-setting #anada {
-  margin-top: 3%;
-}
-
 page-setting .setting {
   width: 70vw;
   height: 130px;
+  margin-top: 50px;
 }
 
 page-setting .setting__title img {
@@ -25819,7 +25816,7 @@ page-setting .setting__title img {
 }
 
 page-setting .setting__title h3 {
-  font-size: 2vw;
+  font-size: 1.8vw;
   font-family: 'Kapra Neue';
   font-weight: 600;
   font-style: italic;
@@ -26127,6 +26124,7 @@ page-wines .navbar .options ul li img {
 }
 
 page-wines .wines-region {
+  margin-top: 80px;
   margin-bottom: 3%;
   width: 100%;
 }
@@ -26151,6 +26149,7 @@ page-wines .table {
   display: flex;
   margin-left: auto;
   margin-right: auto;
+  text-transform: uppercase;
 }
 
 page-wines .table__header {
@@ -26161,7 +26160,8 @@ page-wines .table__header {
 }
 
 page-wines .table__header--large {
-  font-size: 1.5em;
+  font-size: 1.2em;
+  margin-top: 6px;
 }
 
 page-wines .table__header--small {
@@ -26177,6 +26177,14 @@ page-wines .table__data {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
+}
+
+page-wines .wineList .table.row .table-header .table__header--small {
+  display: none;
+}
+
+page-wines .wineList .table.row.firstDo .table-header .table__header--small {
+  display: block;
 }
 
 page-wines .selected {

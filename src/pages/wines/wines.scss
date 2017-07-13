@@ -29,6 +29,7 @@ page-wines {
         }
     }
     .wines-region {
+        margin-top: 80px;
         margin-bottom: 3%;
         width: 100%;
         h1 {
@@ -68,6 +69,14 @@ page-wines {
             text-transform: uppercase;
             align-items: center;
         }
+    }
+
+    .wineList .table.row .table-header .table__header--small {
+        display: none;
+    }
+
+    .wineList .table.row.firstDo .table-header .table__header--small {
+        display: block;
     }
 
     .selected {

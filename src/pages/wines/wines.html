@@ -15,14 +15,14 @@
         </ul>
       </ion-col>
     </ion-row>
-    <ion-row *ngFor="let region of availableRegions">
+    <ion-row class="wineList" *ngFor="let region of availableRegions">
       <ion-row class="wines-region">
         <ion-col>
           <h1>{{region}}</h1>
         </ion-col>
       </ion-row>
 
-      <ion-row center class="table" *ngFor="let province of getProvinces(region)">
+      <ion-row center class="table" *ngFor="let province of getProvinces(region); let isFirst = first" [ngClass]="{firstDo: isFirst}">
         <ion-list>
           <!-- Table Header -->
           <ion-item no-lines class="table-header">
@@ -31,12 +31,11 @@
                 {{province}}
               </ion-col>
               <ion-col class="table__header--small">añada</ion-col>
-              <ion-col class="table__header--small">PERCIO</ion-col>
+              <ion-col class="table__header--small">PRECIO</ion-col>
               <ion-col class="table__header--small">UDS</ion-col>
               <ion-col col-2></ion-col>
             </ion-row>
           </ion-item>
-
 
           <ion-item-sliding *ngFor="let wine of filterWines(region, province)">
             <ion-item>
@@ -54,14 +53,14 @@
             </ion-item>
 
             <ion-item-options side="right" style="margin-right: 16px;">
-              <div class="sliding-div" (click)="order(wine, 10);">
+              <div class="sliding-div" (click)="order(wine, 12);">
                 <img class="image-div" src="assets/image/double_red_bottle.png" />
-                <div style="font-style:Italic;">10</div>
+                <div style="font-style:Italic;">+12</div>
               </div>
 
-              <div class="sliding-div" (click)="order(wine, 5);">
+              <div class="sliding-div" (click)="order(wine,6);">
                 <img class="image-div" src="assets/image/red_bottle.png" />
-                <div style="font-style:Italic;">5</div>
+                <div style="font-style:Italic;">+6</div>
               </div>
 
               <div class="sliding-div" (click)="remove(wine)">
@@ -69,7 +68,6 @@
                 <div style="font-style:Italic;">ELIMINAR</div>
               </div>
             </ion-item-options>
-
           </ion-item-sliding>
         </ion-list>
       </ion-row>
