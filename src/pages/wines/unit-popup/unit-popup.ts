@@ -15,7 +15,10 @@ export class UnitPopupPage {
   ngOnInit() {
     if (this.navParams.data) {
       this.selectedWine = this.navParams.data;
-      this.selectedWine.ordered = 1;
+      console.log(this.selectedWine.ordered);
+      if (this.navParams.data.ordered == 0) {
+        this.selectedWine.ordered = 1;
+      }
       this.events.publish('order:update');
     }
   }
