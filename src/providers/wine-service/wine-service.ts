@@ -39,7 +39,7 @@ export class WineService {
         .subscribe(data => {
           this.wines = data;
 
-          this.wines = this.wines.map((w) => {
+          this.wines.map((w) => {
             w.ordered = 0;
             w.selected = false;
             return w;
