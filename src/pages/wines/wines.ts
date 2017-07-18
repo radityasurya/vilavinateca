@@ -109,11 +109,6 @@ export class WinesPage {
   }
 
   select($event, wine) {
-    wine.selected = !wine.selected;
-
-    console.log(wine.ordered);
-
-    if (wine.selected) {
       let unitPopup = this.unitPopupCtrl.create(UnitPopupPage, wine, { cssClass: 'custom-popover' });
       unitPopup.present({
         ev: $event
@@ -122,12 +117,11 @@ export class WinesPage {
       unitPopup.onDidDismiss((popoverData) => {
         this.getTotalOrder();
         this.getTotalPrice();
+
+        
       });
 
-    } else {
-      this.getTotalOrder();
-      this.getTotalPrice();
-    }
+
   }
 
   order(wine, number) {
