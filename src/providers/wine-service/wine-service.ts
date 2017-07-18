@@ -39,15 +39,15 @@ export class WineService {
         .subscribe(data => {
           this.wines = data;
 
-          if (country !== undefined) {
+          //if (country !== undefined) {
             this.wines = this.wines.filter(function (w) {
-              if (w.location.country === country) {
+              //if (w.location.country === country) {
                   w.ordered = 0;
                   w.selected = false;
                   return w;
-              }
+              //}
             });
-          }
+          //}
 
           resolve(this.wines);
         });
