@@ -17,7 +17,7 @@ export class UnitPopupPage {
       this.selectedWine = this.navParams.data;
       console.log(this.selectedWine.ordered);
       if (this.navParams.data.ordered == 0) {
-        this.selectedWine.ordered = 1;
+        this.selectedWine.ordered = 6;
       }
       this.events.publish('order:update');
     }
@@ -32,7 +32,6 @@ export class UnitPopupPage {
     if (this.selectedWine.ordered > 0) {
       this.selectedWine.ordered--;
       this.events.publish('order:update');
-
     }
   }
 
@@ -40,8 +39,5 @@ export class UnitPopupPage {
     this.selectedWine.ordered = parseInt(nr).toFixed(0);
     console.log(this.selectedWine.ordered);
     this.events.publish('order:update');
-
   }
-
-
 }

@@ -4,7 +4,8 @@
     <!-- Navbar -->
     <ion-row class="navbar">
       <ion-col col-4>
-        <img src="assets/image/logo.png" /> </ion-col>
+        <img src="assets/image/logo.png" (click)="gotoMain()" />
+      </ion-col>
       <ion-col class="options" col-8>
         <ul>
           <li><img src="assets/image/search_icon.png" (click)="gotoSearchPage();" /></li>

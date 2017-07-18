@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, PopoverController, Events } from 'ionic-angular';
+import { NavController, NavParams, PopoverController, Events } from 'ionic-angular';
 import { WineService } from '../../providers/wine-service/wine-service';
 import { MainPage } from '../main/main';
 import { UnitPopupPage } from './unit-popup/unit-popup';
@@ -24,14 +24,17 @@ export class WinesPage {
   public selectedCountry: any = "Spain";
   public availableRegions: any;
   public availableProvinces: any;
-
+  public winesType: string = "";
 
   @ViewChild('unitPopup') UnitPopupPage: UnitPopupPage;
 
   constructor(public navCtrl: NavController,
     private wineService: WineService,
     public unitPopupCtrl: PopoverController,
-    public events: Events) {
+    public events: Events,
+    public navParams: NavParams) {
+
+    this.winesType = this.navParams.get('type');
 
     this.availableRegions = [];
     this.availableProvinces = [];
@@ -41,7 +44,13 @@ export class WinesPage {
   }
 
   ionViewDidLoad() {
-    this.loadWines(this.selectedCountry);
+    let country = this.selectedCountry;
+
+    if (this.winesType === 'foreign') {
+        country = undefined;
+    }
+
+    this.loadWines(country);
   }
 
   checkout() {
@@ -61,7 +70,7 @@ export class WinesPage {
   }
 
   loadWines(country) {
-    this.wineService.load(country)
+    this.wineService.load(country, this.winesType)
       .then(response => {
         this.wines = response;
         this.getAvailableRegions();
@@ -117,11 +126,7 @@ export class WinesPage {
       unitPopup.onDidDismiss((popoverData) => {
         this.getTotalOrder();
         this.getTotalPrice();
-
-        
       });
-
-
   }
 
   order(wine, number) {
@@ -149,12 +154,11 @@ export class WinesPage {
   }
 
   remove(wine) {
-    this.wines.splice(this.wines.indexOf(wine), 1);
+    wine.ordered = 0;
 
     this.getTotalOrder();
     this.getTotalPrice();
   }
-
 
   showColor(wineType) {
     var color = "";
