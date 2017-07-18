@@ -20,6 +20,8 @@ page-setting {
       color: #222;
     }
   }
+  #anada { margin-top: 70px }
+
   .setting {
     width: 70vw;
     height: 130px;
@@ -42,6 +44,8 @@ page-setting {
     &__types {
       font-size: 1.6vw;
       margin-left: 20%;
+      margin-top: 30px;
+      
       .check-icon {
         color: #d2003c;
         border: 1px solid gray;

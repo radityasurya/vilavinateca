@@ -47,7 +47,7 @@ export class WinesPage {
     let country = this.selectedCountry;
 
     if (this.winesType === 'foreign') {
-        country = undefined;
+        country = '';
     }
 
     this.loadWines(country);

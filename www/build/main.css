@@ -25808,6 +25808,10 @@ page-setting .navbar__close {
   color: #222;
 }
 
+page-setting #anada {
+  margin-top: 70px;
+}
+
 page-setting .setting {
   width: 70vw;
   height: 130px;
@@ -25832,6 +25836,7 @@ page-setting .setting__container {
 page-setting .setting__types {
   font-size: 1.6vw;
   margin-left: 20%;
+  margin-top: 30px;
 }
 
 page-setting .setting__types .check-icon {
