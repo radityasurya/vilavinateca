@@ -25626,6 +25626,10 @@ page-quotations .footer-item-div {
   border-radius: 20px;
 }
 
+.popover-content {
+  width: 200px !important;
+}
+
 page-quantity-popup .unidades-font {
   font-size: 15px;
   padding-top: 20px;
@@ -26217,6 +26221,10 @@ page-wines .sliding-div {
 page-wines .sliding-div .image-div {
   height: 46%;
   margin-top: 8px;
+}
+
+.popover-content {
+  width: 200px !important;
 }
 
 page-unit-popup .unidades-font {
