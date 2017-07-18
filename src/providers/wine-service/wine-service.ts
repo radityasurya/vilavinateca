@@ -39,18 +39,19 @@ export class WineService {
         .subscribe(data => {
           this.wines = data;
 
-          this.wines = this.wines.filter(function (w) {
-            if (country !== '' && w.location.country === country) {
-                w.ordered = 0;
-                w.selected = false;
-                return w;
+          this.wines = this.wines.map((w) => {
+            w.ordered = 0;
+            w.selected = false;
+            return w;
+          })
 
-            } else if (country === '') {
-                w.ordered = 0;
-                w.selected = false;
+          if (country) {
+            this.wines = this.wines.filter(function (w) {
+              if (w.location.country === country) {
                 return w;
-            }
-          });
+              }
+            });
+          }
 
           resolve(this.wines);
         });
