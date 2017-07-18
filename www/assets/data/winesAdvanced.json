@@ -1,0 +1,54 @@
+[
+    {
+        "id": 1,
+        "name": "Flor Del Pingus Avanzado",
+        "label": "Dominio de Pingus",
+        "type": "tinto",
+        "year": 2014,
+        "price": 51.90,
+        "location": {
+            "country": "Spain",
+            "region": "Ribera del Duero",
+            "province": "Dominio de Pingus"
+        }
+    },
+    {
+        "id": 2,
+        "name": "FLOR DEL PINGUS(MAGNUM) Avanzado",
+        "label": "Dominio de Pingus",
+        "type": "tinto",
+        "year": 2014,
+        "price": 103.80,
+        "location": {
+            "country": "Spain",
+            "region": "Ribera del Duero",
+            "province": "Dominio de Pingus 2"
+        }
+    },
+    {
+        "id": 3,
+        "name": "BLANCO PINGUS Avanzado",
+        "label": "Dominio de Pingus",
+        "type": "tinto",
+        "year": 2015,
+        "price": 45.40,
+        "location": {
+            "country": "Spain",
+            "region": "Ribera del Duero",
+            "province": "Dominio de Pingus"
+        }
+    },
+    {
+        "id": 4,
+        "name": "BLANCO PINGUS (MAGNUM) Avanzado",
+        "label": "Dominio de Pingus",
+        "type": "blanco",
+        "year": 2015,
+        "price": 98.80,
+        "location": {
+            "country": "Spain",
+            "region": "Ribera del Duero",
+            "province": "Dominio de Pingus 3"
+        }
+    }
+]

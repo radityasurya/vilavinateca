@@ -12,7 +12,7 @@ export class MainPage {
 
   }
 
-  gotoWineListPage(){
-    this.navCtrl.push(WinesPage);
+  gotoWineListPage(type) {
+    this.navCtrl.push(WinesPage, {'type': type});
   }
 }

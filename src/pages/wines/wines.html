@@ -4,7 +4,8 @@
     <!-- Navbar -->
     <ion-row class="navbar">
       <ion-col col-4>
-        <img src="assets/image/logo.png" /> </ion-col>
+        <img src="assets/image/logo.png" (click)="gotoMain()" />
+      </ion-col>
       <ion-col class="options" col-8>
         <ul>
           <li><img src="assets/image/search_icon.png" (click)="gotoSearchPage();" /></li>
@@ -40,14 +41,14 @@
           <ion-item-sliding *ngFor="let wine of filterWines(region, province)">
             <ion-item>
               <ion-row class="table__data">
-                <ion-col [class.selected]="wine?.selected" col-6>{{wine?.name}}
+                <ion-col [class.selected]="wine?.ordered > 0" col-6>{{wine?.name}}
                   <div class="color-div" [style.background-color]="showColor(wine?.type)"></div>
                 </ion-col>
-                <ion-col class="table-data" [class.selected]="wine?.selected" text-right>{{wine?.year}}</ion-col>
-                <ion-col [class.selected]="wine?.selected" text-right>{{wine?.price}} €</ion-col>
-                <ion-col #unitPopup [class.selected]="wine?.selected" text-right>{{wine.ordered == 0 ? '' : wine.ordered}}</ion-col>
+                <ion-col class="table-data" [class.selected]="wine?.ordered > 0" text-right>{{wine?.year}}</ion-col>
+                <ion-col [class.selected]="wine?.ordered > 0" text-right>{{wine?.price}} €</ion-col>
+                <ion-col #unitPopup [class.selected]="wine?.ordered > 0" text-right>{{wine.ordered == 0 ? '' : wine.ordered}}</ion-col>
                 <ion-col col-2 class="checkbox-col" (click)="select($event, wine);">
-                  <ion-icon [name]="wine?.selected ? 'ios-checkmark-circle' : 'ios-checkmark-circle-outline'"></ion-icon>
+                  <ion-icon [name]="wine?.ordered > 0 ? 'ios-checkmark-circle' : 'ios-checkmark-circle-outline'"></ion-icon>
                 </ion-col>
               </ion-row>
             </ion-item>

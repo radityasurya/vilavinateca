@@ -1,70 +1,70 @@
 page-quantity-popup {
-  .splash-div{
-      width: 100%;
-      background-image: url(../../assets/image/splash.jpg);
-      background-size: 100% 100%;
-      height: 100%;
-  }
+    .unidades-font {
+      font-size: 15px;
+      padding-top: 20px;
+      margin-left: 14px;
+      font-weight: bold;
+    }
 
-  .unidades-font{
-    font-style: italic;
-    font-size:15px;
-    padding-top:20px;
-    margin-left:10px;
-  }
-
-  .minus-plus-div{
-    width: 170px;
-    height: 40px;
-    margin-left: 15px;
-    margin-top: 15px;
-    border: 1px solid gray;
-    border-radius: 2px;
-    vertical-align: middle;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    .minus-btn{
-      color: gray;
-      font-size: 40px;
+    .minus-plus-div {
+      width: 170px;
+      height: 40px;
       margin-left: 15px;
-    }
+      margin-top: 15px;
+      border: 1px solid gray;
+      border-radius: 2px;
+      vertical-align: middle;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-    .plus-btn{
-      color: #d8444f;
-      font-size: 43px;
-      margin-right: 12px;
-    }
+      .minus-btn {
+        color: gray;
+        font-size: 40px;
+        margin-left: 15px;
+        margin-top: 0px;
+        margin-bottom: 5px;
+      }
 
-    .input-div{
-      font-size:20px;
-      width:100px;
-      text-align:center;
-      .text-input{
-        text-align:center;
+      .plus-btn {
+        color: #d8444f;
+        font-size: 43px;
+        margin-right: 12px;
+        margin-top: 0;
+        margin-bottom: 8px;
+      }
+
+      .input-div {
+        font-size: 20px;
+        width: 100px;
+        text-align: center;
+
+        .text-input {
+          text-align: center;
+          font-weight: bold;
+        }
       }
     }
-  }
 
-  .div-06{
-    font-size: 26px;
-    width: 80px;
-    height: 30px;
-    border-radius: 15px;
-    border: 1px solid white;
-    text-align: center;
-    color: gray;
-    margin-left: 14px;
-    margin-top: 25px;
-    float:left;
-  }
+    .div-06 {
+      font-size: 20px;
+      width: 80px;
+      height: 36px;
+      border-radius: 18px;
+      border: 1px solid white;
+      text-align: center;
+      color: gray;
+      margin-left: 14px;
+      margin-top: 25px;
+      float: left;
+      padding: 5px;
+    }
 
-  .bottom-line{
-    background-color: #d3000f;
-    width: 200px;
-    height: 10px;
-    float: left;
-    margin-top: 20px;
-  }
+    .bottom-line {
+      background-color: #d3000f;
+      width: 200px;
+      height: 10px;
+      float: left;
+      margin-top: 20px;
+    }
 }
